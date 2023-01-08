@@ -8,7 +8,12 @@ MODULE_DESCRIPTION("It honks");
 MODULE_VERSION("0.0.1");
 
 static int __init goose_init(void) {
-	printk(KERN_INFO "Honk!\n");
+	int i;
+	for(i = 0; i < 100; i++) {
+		printk(KERN_INFO "Honk!\n");
+	}
+	// make the module unremovable
+	try_module_get(THIS_MODULE);
 	return 0;
 }
 
